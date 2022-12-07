@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:nlg_mobile_application/components/hero_card.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -54,7 +55,10 @@ class _HomePageState extends State<HomePage> {
                         style: GoogleFonts.poppins(
                           letterSpacing: 1,
                           color: Colors.white,
-                          fontSize: 22,
+                          fontSize: MediaQuery.of(context).orientation ==
+                                  Orientation.portrait
+                              ? 22
+                              : 30,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
@@ -68,17 +72,40 @@ class _HomePageState extends State<HomePage> {
                         textAlign: TextAlign.center,
                         style: GoogleFonts.poppins(
                           color: Colors.red,
-                          fontSize: 12,
+                          fontSize: MediaQuery.of(context).orientation ==
+                                  Orientation.portrait
+                              ? 12
+                              : 20,
                           fontWeight: FontWeight.w300,
                         ),
                       ),
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 20.0),
-                    child: Container(
-                      height: 120,
-                      color: Colors.amber,
+                    padding: const EdgeInsets.symmetric(vertical: 10.0),
+                    child: SizedBox(
+                      height: 210,
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        children: [
+                          Row(
+                            children: [
+                              HeroCard(
+                                bg_image: 'OW2_Dream_Defiant_bg',
+                                vector: 'OW2_Dream_Defiant_1',
+                                text1: 'OVER',
+                                text2: 'WATCH',
+                              ),
+                              HeroCard(
+                                bg_image: 'Rocket_League_Octane_With_Rays_bg',
+                                vector: 'Rocket_League_Octane_With_Rays_1',
+                                text1: 'Rocket',
+                                text2: 'League',
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ],
