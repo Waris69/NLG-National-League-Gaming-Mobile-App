@@ -4,7 +4,6 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'components/custom_button.dart';
-import 'components/hero_card.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -74,38 +73,6 @@ class _HomePageState extends State<HomePage> {
                           fontSize: MediaQuery.of(context).size.width * 0.03,
                           fontWeight: FontWeight.w400,
                         ),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10.0),
-                    child: SizedBox(
-                      height: 210,
-                      child: ListView(
-                        scrollDirection: Axis.horizontal,
-                        children: [
-                          Row(
-                            children: [
-                              HeroCard(
-                                changePosition: false,
-                                bg_image: 'OW2_Dream_Defiant_bg',
-                                vector: 'OW2_Dream_Defiant_1',
-                                text1: 'OVER',
-                                text2: 'WATCH',
-                              ),
-                              HeroCard(
-                                changePosition: true,
-                                bg_image: 'Rocket_League_Octane_With_Rays_bg',
-                                vector: 'Rocket_League_Octane_With_Rays_1',
-                                text1: 'Rocket',
-                                text2: 'League',
-                              ),
-                              SizedBox(
-                                width: MediaQuery.of(context).size.width * 0.07,
-                              )
-                            ],
-                          ),
-                        ],
                       ),
                     ),
                   ),
