@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:nlg_mobile_application/components/hero_card.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -55,10 +55,7 @@ class _HomePageState extends State<HomePage> {
                         style: GoogleFonts.poppins(
                           letterSpacing: 1,
                           color: Colors.white,
-                          fontSize: MediaQuery.of(context).orientation ==
-                                  Orientation.portrait
-                              ? 22
-                              : 30,
+                          fontSize: MediaQuery.of(context).size.width * 0.06,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
@@ -72,10 +69,7 @@ class _HomePageState extends State<HomePage> {
                         textAlign: TextAlign.center,
                         style: GoogleFonts.poppins(
                           color: Colors.red,
-                          fontSize: MediaQuery.of(context).orientation ==
-                                  Orientation.portrait
-                              ? 12
-                              : 20,
+                          fontSize: MediaQuery.of(context).size.width * 0.03,
                           fontWeight: FontWeight.w300,
                         ),
                       ),
@@ -91,12 +85,14 @@ class _HomePageState extends State<HomePage> {
                           Row(
                             children: [
                               HeroCard(
+                                changePosition: false,
                                 bg_image: 'OW2_Dream_Defiant_bg',
                                 vector: 'OW2_Dream_Defiant_1',
                                 text1: 'OVER',
                                 text2: 'WATCH',
                               ),
                               HeroCard(
+                                changePosition: true,
                                 bg_image: 'Rocket_League_Octane_With_Rays_bg',
                                 vector: 'Rocket_League_Octane_With_Rays_1',
                                 text1: 'Rocket',
