@@ -36,16 +36,28 @@ class _AnnouncementCardState extends State<AnnouncementCard> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(left: 10, top: 10, bottom: 10),
-                child: Stack(
-                  children: [
-                    Container(
-                      width: 90,
-                      decoration: BoxDecoration(
-                        color: const Color(0xff140851),
-                        borderRadius: BorderRadius.circular(8),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(8),
+                  child: Stack(
+                    alignment: AlignmentDirectional.topEnd,
+                    children: [
+                      Container(
+                        width: 90,
+                        decoration: const BoxDecoration(
+                          color: Color(0xff140851),
+                        ),
                       ),
-                    ),
-                  ],
+                      Positioned(
+                        left: 15,
+                        child: Image.asset(
+                          'assets/images/announcementCardKeyboard.png',
+                          fit: BoxFit.cover,
+                          width: 100,
+                          height: 70,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
               Text(
