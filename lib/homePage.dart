@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:nlg_mobile_application/components/input_components.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -76,9 +77,27 @@ class _HomePageState extends State<HomePage> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 20.0),
-                    child: Container(
-                      height: 120,
-                      color: Colors.amber,
+                    child: Column(
+                      children: [
+                        InputComponent(
+                          placeholder: 'First Name',
+                          changeStyle: false,
+                        ),
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        InputComponent(
+                          placeholder: 'Username',
+                          changeStyle: true,
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        InputComponent(
+                          placeholder: 'Password',
+                          changeStyle: true,
+                        ),
+                      ],
                     ),
                   ),
                 ],
