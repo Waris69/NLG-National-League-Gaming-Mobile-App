@@ -3,6 +3,8 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'components/custom_button.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -68,19 +70,73 @@ class _HomePageState extends State<HomePage> {
                         textAlign: TextAlign.center,
                         style: GoogleFonts.poppins(
                           color: Colors.red,
+<<<<<<< Updated upstream
                           fontSize: 12,
                           fontWeight: FontWeight.w300,
+=======
+                          fontSize: MediaQuery.of(context).size.width * 0.03,
+                          fontWeight: FontWeight.w400,
+>>>>>>> Stashed changes
                         ),
                       ),
                     ),
                   ),
                   Padding(
+<<<<<<< Updated upstream
                     padding: const EdgeInsets.only(top: 20.0),
                     child: Container(
                       height: 120,
                       color: Colors.amber,
+=======
+                    padding: const EdgeInsets.symmetric(vertical: 10.0),
+                    child: SizedBox(
+                      height: 210,
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        children: [
+                          Row(
+                            children: [
+                              HeroCard(
+                                changePosition: false,
+                                bg_image: 'OW2_Dream_Defiant_bg',
+                                vector: 'OW2_Dream_Defiant_1',
+                                text1: 'OVER',
+                                text2: 'WATCH',
+                              ),
+                              HeroCard(
+                                changePosition: true,
+                                bg_image: 'Rocket_League_Octane_With_Rays_bg',
+                                vector: 'Rocket_League_Octane_With_Rays_1',
+                                text1: 'Rocket',
+                                text2: 'League',
+                              ),
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.07,
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
+>>>>>>> Stashed changes
                     ),
                   ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 20, vertical: 4),
+                    child: CustomButton(
+                      text: 'Submit',
+                    ),
+                  ),
+                  Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 20, vertical: 4),
+                    child: CustomButton(
+                      text: 'SIGN IN',
+                    ),
+                  )
                 ],
               ),
             ),
