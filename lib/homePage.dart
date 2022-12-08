@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'components/custom_button.dart';
+import 'components/hero_card.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -70,24 +71,13 @@ class _HomePageState extends State<HomePage> {
                         textAlign: TextAlign.center,
                         style: GoogleFonts.poppins(
                           color: Colors.red,
-<<<<<<< Updated upstream
-                          fontSize: 12,
-                          fontWeight: FontWeight.w300,
-=======
                           fontSize: MediaQuery.of(context).size.width * 0.03,
                           fontWeight: FontWeight.w400,
->>>>>>> Stashed changes
                         ),
                       ),
                     ),
                   ),
                   Padding(
-<<<<<<< Updated upstream
-                    padding: const EdgeInsets.only(top: 20.0),
-                    child: Container(
-                      height: 120,
-                      color: Colors.amber,
-=======
                     padding: const EdgeInsets.symmetric(vertical: 10.0),
                     child: SizedBox(
                       height: 210,
@@ -117,7 +107,6 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ],
                       ),
->>>>>>> Stashed changes
                     ),
                   ),
                   const SizedBox(
