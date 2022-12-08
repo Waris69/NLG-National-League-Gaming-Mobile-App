@@ -98,6 +98,9 @@ class _HomePageState extends State<HomePage> {
                                 text1: 'Rocket',
                                 text2: 'League',
                               ),
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.1,
+                              ),
                             ],
                           ),
                         ],
