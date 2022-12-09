@@ -21,21 +21,22 @@ class _HomePageState extends State<HomePage> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: const Color(0xff010424),
-        body: ListView(
-          children: [
-            Container(
-              height: MediaQuery.of(context).orientation == Orientation.portrait
-                  ? MediaQuery.of(context).size.height * 0.85
-                  : MediaQuery.of(context).size.height * 2.7,
-              width: double.infinity,
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  fit: BoxFit.fitWidth,
-                  opacity: 0.5,
-                  image: AssetImage('assets/images/bg.png'),
-                ),
-              ),
-              child: Column(
+        body: Container(
+          height: double.infinity,
+          // MediaQuery.of(context).orientation == Orientation.portrait
+          //     ? MediaQuery.of(context).size.height * 0.85
+          //     : MediaQuery.of(context).size.height * 2.7,
+          width: double.infinity,
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              fit: BoxFit.fitWidth,
+              opacity: 0.5,
+              image: AssetImage('assets/images/bg.png'),
+            ),
+          ),
+          child: ListView(
+            children: [
+              Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
@@ -189,50 +190,12 @@ class _HomePageState extends State<HomePage> {
                   // const AnnouncementCard(),
                 ],
               ),
-            ),
-            const SizedBox(
-              height: 600,
-              child: AnnouncementCard(),
-            ),
-            // !Padding(
-            //   padding: const EdgeInsets.only(top: 20.0),
-            //   child: Column(
-            //     children: [
-            //       InputComponent(
-            //         placeholder: 'First Name',
-            //         changeStyle: false,
-            //       ),
-            //       const SizedBox(
-            //         height: 30,
-            //       ),
-            //       InputComponent(
-            //         placeholder: 'Username',
-            //         changeStyle: true,
-            //       ),
-            //       const SizedBox(
-            //         height: 10,
-            //       ),
-            //       InputComponent(
-            //         placeholder: 'Password',
-            //         changeStyle: true,
-            //       ),
-            //     ],
-            //   ),
-            // ),
-            // const AnnouncementCard(),
-            // Padding(
-            //   padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 4),
-            //   child: CustomButton(
-            //     text: 'Submit',
-            //   ),
-            // ),
-            // Padding(
-            //   padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 4),
-            //   child: CustomButton(
-            //     text: 'SIGN IN',
-            //   ),
-            // ),
-          ],
+              const SizedBox(
+                height: 600,
+                child: AnnouncementCard(),
+              ),
+            ],
+          ),
         ),
       ),
     );
