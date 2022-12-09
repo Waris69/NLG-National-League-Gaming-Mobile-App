@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nlg_mobile_application/components/hero_card.dart';
 import 'package:nlg_mobile_application/components/announcement_component.dart';
+import 'package:nlg_mobile_application/components/input_components.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -81,6 +82,31 @@ class _HomePageState extends State<HomePage> {
                     child: SizedBox(
                       height: 210,
                       child: HeroCard(),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20.0),
+                    child: Column(
+                      children: [
+                        InputComponent(
+                          placeholder: 'First Name',
+                          changeStyle: false,
+                        ),
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        InputComponent(
+                          placeholder: 'Username',
+                          changeStyle: true,
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        InputComponent(
+                          placeholder: 'Password',
+                          changeStyle: true,
+                        ),
+                      ],
                     ),
                   ),
                   const AnnouncementCard(),
