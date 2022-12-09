@@ -6,6 +6,8 @@ import 'package:nlg_mobile_application/components/hero_card.dart';
 import 'package:nlg_mobile_application/components/announcement_component.dart';
 import 'package:nlg_mobile_application/components/input_components.dart';
 
+import 'components/custom_button.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -77,6 +79,9 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                   ),
+                  const SizedBox(
+                    height: 20,
+                  ),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 10.0),
                     child: SizedBox(
@@ -110,6 +115,20 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   const AnnouncementCard(),
+                  Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 20, vertical: 4),
+                    child: CustomButton(
+                      text: 'Submit',
+                    ),
+                  ),
+                  Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 20, vertical: 4),
+                    child: CustomButton(
+                      text: 'SIGN IN',
+                    ),
+                  )
                 ],
               ),
             ),
