@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nlg_mobile_application/components/hero_card.dart';
+import 'package:nlg_mobile_application/components/announcement_component.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -82,6 +83,7 @@ class _HomePageState extends State<HomePage> {
                       child: HeroCard(),
                     ),
                   ),
+                  const AnnouncementCard(),
                 ],
               ),
             ),
