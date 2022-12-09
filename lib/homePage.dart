@@ -190,7 +190,10 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
-            const AnnouncementCard(),
+            const SizedBox(
+              height: 600,
+              child: AnnouncementCard(),
+            ),
             // !Padding(
             //   padding: const EdgeInsets.only(top: 20.0),
             //   child: Column(
