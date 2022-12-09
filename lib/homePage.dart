@@ -82,6 +82,8 @@ class _HomePageState extends State<HomePage> {
                   const SizedBox(
                     height: 20,
                   ),
+
+                  //? Hero cards
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 10.0),
                     child: SizedBox(
@@ -89,49 +91,144 @@ class _HomePageState extends State<HomePage> {
                       child: HeroCard(),
                     ),
                   ),
+
+                  // ? Subscription Row
                   Padding(
-                    padding: const EdgeInsets.only(top: 20.0),
-                    child: Column(
+                    padding: const EdgeInsets.only(
+                        left: 25.0, right: 25.0, top: 40.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        InputComponent(
-                          placeholder: 'First Name',
-                          changeStyle: false,
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Ninja',
+                              style: GoogleFonts.poppins(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w700,
+                                fontSize: 18,
+                              ),
+                            ),
+                            Text(
+                              'Streaming Now - Game',
+                              style: GoogleFonts.poppins(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w500,
+                                fontSize: 14,
+                              ),
+                            ),
+                          ],
                         ),
-                        const SizedBox(
-                          height: 30,
-                        ),
-                        InputComponent(
-                          placeholder: 'Username',
-                          changeStyle: true,
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        InputComponent(
-                          placeholder: 'Password',
-                          changeStyle: true,
+                        Row(
+                          children: [
+                            const Icon(
+                              Icons.favorite_rounded,
+                              color: Colors.white,
+                            ),
+                            const SizedBox(
+                              width: 5,
+                            ),
+                            Material(
+                              borderRadius: BorderRadius.circular(5),
+                              color: const Color(0xffB00B0E),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  'Following',
+                                  style: GoogleFonts.poppins(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 14,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ],
                     ),
                   ),
-                  const AnnouncementCard(),
+
+                  // ? Announcement Row
                   Padding(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 20, vertical: 4),
-                    child: CustomButton(
-                      text: 'Submit',
+                    padding: const EdgeInsets.only(
+                        left: 25.0, right: 25.0, top: 10.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              'Announcement',
+                              style: GoogleFonts.poppins(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w700,
+                                fontSize: 18,
+                              ),
+                            ),
+                            Image.asset(
+                              'assets/icons/spark.png',
+                              height: 20,
+                              width: 40,
+                            ),
+                          ],
+                        ),
+                        Text(
+                          'see more',
+                          style: GoogleFonts.poppins(
+                            decoration: TextDecoration.underline,
+                            color: Colors.blue,
+                            fontWeight: FontWeight.w400,
+                            fontSize: 15,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                  Padding(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 20, vertical: 4),
-                    child: CustomButton(
-                      text: 'SIGN IN',
-                    ),
-                  )
+                  // const AnnouncementCard(),
                 ],
               ),
             ),
+            const AnnouncementCard(),
+            // !Padding(
+            //   padding: const EdgeInsets.only(top: 20.0),
+            //   child: Column(
+            //     children: [
+            //       InputComponent(
+            //         placeholder: 'First Name',
+            //         changeStyle: false,
+            //       ),
+            //       const SizedBox(
+            //         height: 30,
+            //       ),
+            //       InputComponent(
+            //         placeholder: 'Username',
+            //         changeStyle: true,
+            //       ),
+            //       const SizedBox(
+            //         height: 10,
+            //       ),
+            //       InputComponent(
+            //         placeholder: 'Password',
+            //         changeStyle: true,
+            //       ),
+            //     ],
+            //   ),
+            // ),
+            // const AnnouncementCard(),
+            // Padding(
+            //   padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 4),
+            //   child: CustomButton(
+            //     text: 'Submit',
+            //   ),
+            // ),
+            // Padding(
+            //   padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 4),
+            //   child: CustomButton(
+            //     text: 'SIGN IN',
+            //   ),
+            // ),
           ],
         ),
       ),
