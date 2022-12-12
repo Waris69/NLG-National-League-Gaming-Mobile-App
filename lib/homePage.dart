@@ -1,3 +1,4 @@
+import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -5,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:nlg_mobile_application/components/hero_card.dart';
 import 'package:nlg_mobile_application/components/announcement_component.dart';
 import 'package:nlg_mobile_application/components/input_components.dart';
+import 'package:nlg_mobile_application/components/team_card.dart';
 
 import 'components/custom_button.dart';
 
@@ -16,11 +18,68 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  int _currentIndex = 0;
+  final iconList = <IconData>[
+    Icons.home,
+    Icons.search_outlined,
+    Icons.person_outline_rounded,
+  ];
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: const Color(0xff010424),
+        extendBody: true,
+        backgroundColor: const Color(0xff19245D),
+        bottomNavigationBar: AnimatedBottomNavigationBar(
+          backgroundColor: const Color(0xff19245D),
+          activeColor: Colors.white,
+          inactiveColor: Colors.white,
+          icons: iconList,
+          activeIndex: _currentIndex,
+          gapLocation: GapLocation.none,
+          leftCornerRadius: 32,
+          rightCornerRadius: 32,
+          onTap: (index) => setState(() => _currentIndex = index),
+          //other params
+        ),
+
+        // BottomNavigationBar(
+        //   backgroundColor: const Color(0xff19245D),
+        //   currentIndex: _currentIndex,
+        //   type: BottomNavigationBarType.fixed,
+        //   showSelectedLabels: false,
+        //   showUnselectedLabels: false,
+        //   iconSize: 26,
+        //   onTap: (index) {
+        //     setState(() {
+        //       _currentIndex = index;
+        //     });
+        //   },
+        //   items: const [
+        //     BottomNavigationBarItem(
+        //       icon: Icon(
+        //         Icons.home_outlined,
+        //         color: Colors.white,
+        //       ),
+        //       label: 'Home',
+        //     ),
+        //     BottomNavigationBarItem(
+        //       icon: Icon(
+        //         Icons.search_outlined,
+        //         color: Colors.white,
+        //       ),
+        //       label: 'Search',
+        //     ),
+        //     BottomNavigationBarItem(
+        //       icon: Icon(
+        //         Icons.person_outline_rounded,
+        //         color: Colors.white,
+        //       ),
+        //       label: 'Profile',
+        //     ),
+        //   ],
+        // ),
+
         body: Container(
           height: double.infinity,
           // MediaQuery.of(context).orientation == Orientation.portrait
@@ -300,91 +359,100 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
-              Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 25),
-                    child: SizedBox(
-                      width: 120,
-                      child: Column(
-                        children: [
-                          Container(
-                            height: 150,
-                            decoration: BoxDecoration(
-                              color: Colors.red,
-                              borderRadius: BorderRadius.circular(25),
-                            ),
+              const Padding(
+                padding: EdgeInsets.symmetric(vertical: 10.0),
+                child: SizedBox(
+                  height: 290,
+                  child: TeamCard(),
+                ),
+              ),
+
+              // ? What we do
+
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: const Color(0xff19245D),
+                    borderRadius: BorderRadius.circular(25.0),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Column(
+                      children: [
+                        // ? What we do
+                        Text(
+                          'What We Do',
+                          style: GoogleFonts.poppins(
+                            letterSpacing: 3,
+                            fontSize: 22.0,
+                            fontWeight: FontWeight.w700,
+                            color: Colors.white,
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 10),
-                            child: Text(
-                              'Donald Beam \| MS, LPC',
-                              textAlign: TextAlign.center,
-                              style: GoogleFonts.poppins(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
-                                color: Colors.white,
-                              ),
-                            ),
+                        ),
+                        Text(
+                          'Workout / Game / Have Fun',
+                          style: GoogleFonts.poppins(
+                            fontSize: 12.0,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.white,
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 10),
-                            child: Text(
-                              'Behavioral Health Director',
-                              textAlign: TextAlign.center,
-                              style: GoogleFonts.poppins(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w600,
-                                color: Colors.red,
-                              ),
-                            ),
+                        ),
+                        const SizedBox(
+                          height: 15.0,
+                        ),
+                        Text(
+                          'League Play – Ditch your gym membership! You will be subscribed to our live workout program with access to our entire library of workouts, stretches, posture practices and other information. On top of that, you will have an in-game coach with weekly practices as well as a competitive game schedule. You also are eligible for any free giveaways, school scholarships and access to connect with a life coach to help you with your out of game goals.',
+                          textAlign: TextAlign.justify,
+                          style: GoogleFonts.poppins(
+                            fontSize: 12.0,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.white,
                           ),
-                        ],
-                      ),
+                        ),
+
+                        // ? /////////////////////////////////
+                        const SizedBox(
+                          height: 30.0,
+                        ),
+                        // ? /////////////////////////////////
+
+                        // ! Second Para
+
+                        // ? Tournaments
+                        Text(
+                          'Tournaments',
+                          style: GoogleFonts.poppins(
+                            letterSpacing: 3,
+                            fontSize: 22.0,
+                            fontWeight: FontWeight.w700,
+                            color: Colors.white,
+                          ),
+                        ),
+                        Text(
+                          'Workout / Game / Have Fun',
+                          style: GoogleFonts.poppins(
+                            fontSize: 12.0,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.white,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 15.0,
+                        ),
+                        Text(
+                          'Will work just like your regular sports teams league. Get a bunch of friends together, make a team, meet up all at the same house or jump on chat together, sign in and get ready to compete. This is the place where you can continue your esports competitiveness with like-minded people. Play for prizes and other exclusive content! Our adult leagues are tailored for the group of friends who are too busy now. This allows your squad to have a set time a week to get online to play because let’s face it, lives are busy, so when you do get time to game… you don’t waste it on solo queue games with toxic teammates. Sign up, get competitive, play for \$\$\$ and bragging rights! We also will have live trainers throughout each event.',
+                          textAlign: TextAlign.justify,
+                          style: GoogleFonts.poppins(
+                            fontSize: 12.0,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 25),
-                    child: SizedBox(
-                      width: 120,
-                      child: Column(
-                        children: [
-                          Container(
-                            height: 150,
-                            decoration: BoxDecoration(
-                              color: Colors.red,
-                              borderRadius: BorderRadius.circular(25),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 10),
-                            child: Text(
-                              'Donald Beam \| MS, LPC',
-                              textAlign: TextAlign.center,
-                              style: GoogleFonts.poppins(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 10),
-                            child: Text(
-                              'Behavioral Health Director',
-                              textAlign: TextAlign.center,
-                              style: GoogleFonts.poppins(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w600,
-                                color: Colors.red,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
+                ),
               ),
 
               const SizedBox(

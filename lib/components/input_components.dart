@@ -23,8 +23,7 @@ class _InputComponentState extends State<InputComponent> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(
-          horizontal: MediaQuery.of(context).size.width * 0.08),
+      padding: const EdgeInsets.symmetric(horizontal: 30),
       child: (widget.changeStyle)
           ? TextField(
               controller: _controller,
