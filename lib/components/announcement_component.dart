@@ -28,27 +28,6 @@ class _AnnouncementCardState extends State<AnnouncementCard> {
         announcementCardimg: 'announcementCardJoystick',
         text: 'Announcement 04',
         icon: 'hearticon'),
-
-    // {
-    //   'announcementCardimg': 'announcementCardKeyboard',
-    //   'text': 'Spartans vs  Kraken',
-    //   'icon': 'cupicon'
-    // },
-    // {
-    //   'announcementCardimg': 'announcementCardJoystick',
-    //   'text': 'Announcement 02',
-    //   'icon': 'hearticon'
-    // },
-    // {
-    //   'announcementCardimg': 'announcementCardKeyboard',
-    //   'text': 'Announcement 03',
-    //   'icon': 'hearticon'
-    // },
-    // {
-    //   'announcementCardimg': 'announcementCardJoystick',
-    //   'text': 'Announcement 04',
-    //   'icon': 'hearticon'
-    // },
   ];
 
   @override
@@ -57,11 +36,11 @@ class _AnnouncementCardState extends State<AnnouncementCard> {
       physics: const NeverScrollableScrollPhysics(),
       itemCount: myList.length,
       itemBuilder: (context, index) => Padding(
-        padding: const EdgeInsets.all(15.0),
+        padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
         child: Center(
           child: Container(
             height: 100,
-            width: MediaQuery.of(context).size.width * 0.85,
+            width: double.infinity,
             decoration: BoxDecoration(
               gradient: const LinearGradient(
                 tileMode: TileMode.clamp,
@@ -84,7 +63,7 @@ class _AnnouncementCardState extends State<AnnouncementCard> {
                       alignment: AlignmentDirectional.topEnd,
                       children: [
                         Container(
-                          width: 90,
+                          width: 80,
                           decoration: const BoxDecoration(
                             color: Color(0xff140851),
                           ),
@@ -101,6 +80,9 @@ class _AnnouncementCardState extends State<AnnouncementCard> {
                       ],
                     ),
                   ),
+                ),
+                const SizedBox(
+                  width: 15,
                 ),
                 Expanded(
                   child: Text(
@@ -151,7 +133,7 @@ class _AnnouncementCardState extends State<AnnouncementCard> {
       ),
     );
 
-    // Padding(
+    // ? Padding(
     //   padding: const EdgeInsets.all(15.0),
     //   child: Center(
     //     child: Container(

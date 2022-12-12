@@ -191,8 +191,204 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
               const SizedBox(
-                height: 600,
-                child: AnnouncementCard(),
+                height: 500,
+                child: Padding(
+                  padding: EdgeInsets.only(top: 5),
+                  child: AnnouncementCard(),
+                ),
+              ),
+
+              // ? Start gaming Button
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 100, vertical: 10),
+                child: Container(
+                  height: 60,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(100),
+                    gradient: const LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        Color(0xff35479E),
+                        Color(0xff160F7D),
+                      ],
+                    ),
+                    boxShadow: [
+                      for (double i = 1; i < 5; i++)
+                        BoxShadow(
+                          offset: const Offset(0, 3),
+                          color: const Color.fromARGB(97, 73, 17, 170),
+                          blurRadius: 6 * i,
+                        ),
+                    ],
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10),
+                          child: Text(
+                            'Start gaming',
+                            style: GoogleFonts.poppins(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                        Container(
+                          height: 40,
+                          width: 40,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(50),
+                            gradient: const LinearGradient(
+                              colors: [Color(0xffED2629), Color(0xffB00B0E)],
+                            ),
+                            boxShadow: [
+                              for (double i = 1; i < 5; i++)
+                                const BoxShadow(
+                                  // offset: const Offset(0, 3),
+                                  color: Color.fromARGB(82, 247, 94, 127),
+                                  blurRadius: 10,
+                                ),
+                            ],
+                          ),
+                          child: const Center(
+                            child: Icon(
+                              Icons.arrow_right_alt_rounded,
+                              color: Colors.white,
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+
+              const SizedBox(
+                height: 20,
+              ),
+
+              // ? Meet The Team
+
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 50),
+                child: Column(
+                  children: [
+                    Text(
+                      'Meet The Team',
+                      style: GoogleFonts.poppins(
+                        fontSize: 22,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.white,
+                      ),
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 90),
+                      child: Divider(
+                        color: Colors.white,
+                        thickness: 2,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20.0,
+                    ),
+                  ],
+                ),
+              ),
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 25),
+                    child: SizedBox(
+                      width: 120,
+                      child: Column(
+                        children: [
+                          Container(
+                            height: 150,
+                            decoration: BoxDecoration(
+                              color: Colors.red,
+                              borderRadius: BorderRadius.circular(25),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 10),
+                            child: Text(
+                              'Donald Beam \| MS, LPC',
+                              textAlign: TextAlign.center,
+                              style: GoogleFonts.poppins(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 10),
+                            child: Text(
+                              'Behavioral Health Director',
+                              textAlign: TextAlign.center,
+                              style: GoogleFonts.poppins(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.red,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 25),
+                    child: SizedBox(
+                      width: 120,
+                      child: Column(
+                        children: [
+                          Container(
+                            height: 150,
+                            decoration: BoxDecoration(
+                              color: Colors.red,
+                              borderRadius: BorderRadius.circular(25),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 10),
+                            child: Text(
+                              'Donald Beam \| MS, LPC',
+                              textAlign: TextAlign.center,
+                              style: GoogleFonts.poppins(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 10),
+                            child: Text(
+                              'Behavioral Health Director',
+                              textAlign: TextAlign.center,
+                              style: GoogleFonts.poppins(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.red,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+
+              const SizedBox(
+                height: 30,
               ),
             ],
           ),
