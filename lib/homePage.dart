@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:ionicons/ionicons.dart';
 import 'package:nlg_mobile_application/components/hero_card.dart';
 import 'package:nlg_mobile_application/components/announcement_component.dart';
 import 'package:nlg_mobile_application/components/input_components.dart';
+import 'package:nlg_mobile_application/components/side_bar.dart';
 import 'package:nlg_mobile_application/components/team_card.dart';
 
 import 'components/custom_button.dart';
@@ -22,14 +24,18 @@ class _HomePageState extends State<HomePage> {
   final iconList = <IconData>[
     Icons.home,
     Icons.search_outlined,
-    Icons.person_outline_rounded,
+    Ionicons.logo_microsoft
   ];
+
+  GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        key: _globalKey,
         extendBody: true,
-        backgroundColor: const Color(0xff19245D),
+        backgroundColor: const Color(0xff010424),
         bottomNavigationBar: AnimatedBottomNavigationBar(
           backgroundColor: const Color(0xff19245D),
           activeColor: Colors.white,
@@ -39,47 +45,19 @@ class _HomePageState extends State<HomePage> {
           gapLocation: GapLocation.none,
           leftCornerRadius: 32,
           rightCornerRadius: 32,
-          onTap: (index) => setState(() => _currentIndex = index),
+          onTap: (index) {
+            setState(() => _currentIndex = index);
+            if (index == 2) {
+              _globalKey.currentState?.openDrawer();
+            }
+          },
           //other params
         ),
-
-        // BottomNavigationBar(
-        //   backgroundColor: const Color(0xff19245D),
-        //   currentIndex: _currentIndex,
-        //   type: BottomNavigationBarType.fixed,
-        //   showSelectedLabels: false,
-        //   showUnselectedLabels: false,
-        //   iconSize: 26,
-        //   onTap: (index) {
-        //     setState(() {
-        //       _currentIndex = index;
-        //     });
-        //   },
-        //   items: const [
-        //     BottomNavigationBarItem(
-        //       icon: Icon(
-        //         Icons.home_outlined,
-        //         color: Colors.white,
-        //       ),
-        //       label: 'Home',
-        //     ),
-        //     BottomNavigationBarItem(
-        //       icon: Icon(
-        //         Icons.search_outlined,
-        //         color: Colors.white,
-        //       ),
-        //       label: 'Search',
-        //     ),
-        //     BottomNavigationBarItem(
-        //       icon: Icon(
-        //         Icons.person_outline_rounded,
-        //         color: Colors.white,
-        //       ),
-        //       label: 'Profile',
-        //     ),
-        //   ],
-        // ),
-
+        drawer: Drawer(
+          width: MediaQuery.of(context).size.width,
+          backgroundColor: const Color(0xff000423),
+          child: const SideMenuBar(),
+        ),
         body: Container(
           height: double.infinity,
           // MediaQuery.of(context).orientation == Orientation.portrait
