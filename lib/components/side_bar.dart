@@ -27,7 +27,7 @@ class _SideMenuBarState extends State<SideMenuBar> {
         child: Stack(
           children: [
             Positioned(
-              bottom: 0,
+              bottom: 20,
               right: 20,
               child: InkWell(
                 onTap: () {
@@ -150,6 +150,9 @@ class _SideMenuBarState extends State<SideMenuBar> {
                         ],
                       ),
                     ),
+                    const SizedBox(
+                      height: 40.0,
+                    )
                   ],
                 ),
               ],
