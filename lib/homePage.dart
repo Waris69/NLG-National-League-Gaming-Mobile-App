@@ -52,9 +52,6 @@ class _HomePageState extends State<HomePage> {
             )),
         body: Container(
           height: double.infinity,
-          // MediaQuery.of(context).orientation == Orientation.portrait
-          //     ? MediaQuery.of(context).size.height * 0.85
-          //     : MediaQuery.of(context).size.height * 2.7,
           width: double.infinity,
           decoration: const BoxDecoration(
             image: DecorationImage(
