@@ -29,7 +29,17 @@ class _ReportBugPageState extends State<ReportBugPage> {
       drawer: Drawer(
         width: MediaQuery.of(context).size.width,
         backgroundColor: const Color(0xff000423),
-        child: const SideMenuBar(),
+        child:
+            // const SideMenuBar(),
+            Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              fit: BoxFit.fitWidth,
+              image: AssetImage('assets/images/sideMenuImage.png'),
+            ),
+          ),
+          child: const SideMenuBar(),
+        ),
       ),
       body: SafeArea(
         child: SingleChildScrollView(

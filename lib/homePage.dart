@@ -39,17 +39,20 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: const Color(0xff010424),
         bottomNavigationBar: CustomBottomBar(globalKey: _globalKey),
         drawer: Drawer(
-            width: MediaQuery.of(context).size.width,
-            backgroundColor: const Color(0xff000423),
-            child: Container(
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  fit: BoxFit.fitWidth,
-                  image: AssetImage('assets/images/sideMenuImage.png'),
-                ),
+          width: MediaQuery.of(context).size.width,
+          backgroundColor: const Color(0xff000423),
+          child:
+              // const SideMenuBar(),
+              Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                fit: BoxFit.fitWidth,
+                image: AssetImage('assets/images/sideMenuImage.png'),
               ),
-              child: const SideMenuBar(),
-            )),
+            ),
+            child: const SideMenuBar(),
+          ),
+        ),
         body: Container(
           height: double.infinity,
           width: double.infinity,
