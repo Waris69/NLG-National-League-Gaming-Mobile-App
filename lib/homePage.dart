@@ -9,6 +9,7 @@ import 'package:nlg_mobile_application/components/announcement_component.dart';
 import 'package:nlg_mobile_application/components/input_components.dart';
 import 'package:nlg_mobile_application/components/side_bar.dart';
 import 'package:nlg_mobile_application/components/team_card.dart';
+import 'package:nlg_mobile_application/utils/custom_bottom_navigation_bar.dart';
 
 import 'components/custom_button.dart';
 
@@ -36,28 +37,19 @@ class _HomePageState extends State<HomePage> {
         key: _globalKey,
         extendBody: true,
         backgroundColor: const Color(0xff010424),
-        bottomNavigationBar: AnimatedBottomNavigationBar(
-          backgroundColor: const Color(0xff19245D),
-          activeColor: Colors.white,
-          inactiveColor: Colors.white,
-          icons: iconList,
-          activeIndex: _currentIndex,
-          gapLocation: GapLocation.none,
-          leftCornerRadius: 32,
-          rightCornerRadius: 32,
-          onTap: (index) {
-            setState(() => _currentIndex = index);
-            if (index == 2) {
-              _globalKey.currentState?.openDrawer();
-            }
-          },
-          //other params
-        ),
+        bottomNavigationBar: CustomBottomBar(globalKey: _globalKey),
         drawer: Drawer(
-          width: MediaQuery.of(context).size.width,
-          backgroundColor: const Color(0xff000423),
-          child: const SideMenuBar(),
-        ),
+            width: MediaQuery.of(context).size.width,
+            backgroundColor: const Color(0xff000423),
+            child: Container(
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  fit: BoxFit.fitWidth,
+                  image: AssetImage('assets/images/sideMenuImage.png'),
+                ),
+              ),
+              child: const SideMenuBar(),
+            )),
         body: Container(
           height: double.infinity,
           // MediaQuery.of(context).orientation == Orientation.portrait
@@ -238,7 +230,7 @@ class _HomePageState extends State<HomePage> {
               // ? Start gaming Button
               Padding(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 100, vertical: 10),
+                    const EdgeInsets.symmetric(horizontal: 90, vertical: 10),
                 child: Container(
                   height: 60,
                   decoration: BoxDecoration(

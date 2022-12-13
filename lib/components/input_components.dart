@@ -23,7 +23,7 @@ class _InputComponentState extends State<InputComponent> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 30),
+      padding: const EdgeInsets.symmetric(horizontal: 25),
       child: (widget.changeStyle)
           ? TextField(
               controller: _controller,
