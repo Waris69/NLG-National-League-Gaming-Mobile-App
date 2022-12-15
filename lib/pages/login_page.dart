@@ -5,7 +5,11 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:nlg_mobile_application/components/custom_button.dart';
 import 'package:nlg_mobile_application/components/input_components.dart';
-import 'package:nlg_mobile_application/homePage.dart';
+import 'package:nlg_mobile_application/notifier/authentication.notifier.dart';
+import 'package:provider/provider.dart' as provider;
+import 'package:supabase/supabase.dart';
+
+import '../service/authentication.service.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -15,8 +19,13 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  TextEditingController usernameController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
+    final AuthenticationNotifier authenticationNotifier =
+        provider.Provider.of<AuthenticationNotifier>(context, listen: false);
     return Scaffold(
       backgroundColor: const Color(0xff000424),
       body: SingleChildScrollView(
@@ -93,11 +102,11 @@ class _LoginPageState extends State<LoginPage> {
 
               Column(
                 children: [
-                  InputComponent(placeholder: 'Username', changeStyle: true),
+                  textfield('Username', usernameController),
                   const SizedBox(
                     height: 20.0,
                   ),
-                  InputComponent(placeholder: 'Password', changeStyle: true),
+                  textfield('Password', passwordController),
                   const SizedBox(
                     height: 10.0,
                   ),
@@ -131,13 +140,22 @@ class _LoginPageState extends State<LoginPage> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 30),
                     child: InkWell(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const HomePage(),
-                          ),
-                        );
+                      onTap: () async {
+                        String email = usernameController.text;
+                        String password = passwordController.text;
+
+                        if (email.isNotEmpty && password.isNotEmpty) {
+                          await authenticationNotifier.signIn(
+                              context: context,
+                              email: email,
+                              password: password);
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('Fill the Credentials'),
+                            ),
+                          );
+                        }
                       },
                       child: CustomButton(text: 'Sign In'),
                     ),
@@ -313,6 +331,17 @@ class _LoginPageState extends State<LoginPage> {
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  textfield(String lable, _controller) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 5),
+      child: InputComponent(
+        controller: _controller,
+        placeholder: lable,
+        changeStyle: true,
       ),
     );
   }

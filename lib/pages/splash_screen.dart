@@ -6,6 +6,10 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nlg_mobile_application/homePage.dart';
+import 'package:nlg_mobile_application/pages/login_page.dart';
+import 'package:nlg_mobile_application/routes/app.routes.dart';
+import 'package:nlg_mobile_application/service/shared_preferences.service.dart';
+import 'package:provider/single_child_widget.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -15,19 +19,30 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  String? checkToken;
+  // ? Check token
+  checkAccessToken() async {
+    Pref pref = Pref();
+    var token = await pref.getAccessTokenFromPreferences();
+    // print(token);
+    setState(() {
+      checkToken = token;
+    });
+  }
+
   @override
   void initState() {
     super.initState();
 
+    // ? Check the access token
+    checkAccessToken();
+
     Timer(
       const Duration(seconds: 4),
       () {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const HomePage(),
-          ),
-        );
+        (checkToken == null)
+            ? Navigator.pushReplacementNamed(context, AppRoutes.loginRoute)
+            : Navigator.pushReplacementNamed(context, AppRoutes.homeRoute);
       },
     );
   }

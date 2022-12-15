@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -19,6 +21,11 @@ class ContactPage extends StatefulWidget {
 
 class _ContactPageState extends State<ContactPage> {
   GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
+  TextEditingController firstNameController = TextEditingController();
+  TextEditingController lastNameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController submitController = TextEditingController();
+  TextEditingController messageController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,10 +80,10 @@ class _ContactPageState extends State<ContactPage> {
                   ],
                 ),
               ),
-              textfield('First Name'),
-              textfield('Last Name'),
-              textfield('Email'),
-              textfield('Submit'),
+              textfield('First Name', firstNameController),
+              textfield('Last Name', lastNameController),
+              textfield('Email', emailController),
+              textfield('Submit', submitController),
               Padding(
                 padding: const EdgeInsets.symmetric(
                     horizontal: 25.0, vertical: 10.0),
@@ -94,6 +101,7 @@ class _ContactPageState extends State<ContactPage> {
                       height: 10,
                     ),
                     TextField(
+                      controller: messageController,
                       maxLines: 5,
                       decoration: InputDecoration(
                         enabledBorder: OutlineInputBorder(
@@ -154,10 +162,11 @@ class _ContactPageState extends State<ContactPage> {
     );
   }
 
-  textfield(String lable) {
+  textfield(String lable, _controller) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 5),
       child: InputComponent(
+        controller: _controller,
         placeholder: lable,
         changeStyle: false,
       ),

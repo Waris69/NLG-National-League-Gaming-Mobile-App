@@ -5,12 +5,14 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:ionicons/ionicons.dart';
 
 class InputComponent extends StatefulWidget {
+  final controller;
   String placeholder;
   bool changeStyle;
   InputComponent({
     super.key,
     required this.placeholder,
     required this.changeStyle,
+    required this.controller,
   });
 
   @override
@@ -18,7 +20,6 @@ class InputComponent extends StatefulWidget {
 }
 
 class _InputComponentState extends State<InputComponent> {
-  TextEditingController _controller = TextEditingController();
   bool showPassword = false;
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,7 @@ class _InputComponentState extends State<InputComponent> {
       padding: const EdgeInsets.symmetric(horizontal: 25),
       child: (widget.changeStyle)
           ? TextField(
-              controller: _controller,
+              controller: widget.controller,
               style: GoogleFonts.inter(
                 color: Colors.white,
               ),
@@ -74,7 +75,7 @@ class _InputComponentState extends State<InputComponent> {
               ),
             )
           : TextField(
-              controller: _controller,
+              controller: widget.controller,
               style: GoogleFonts.inter(
                 color: Colors.white,
               ),

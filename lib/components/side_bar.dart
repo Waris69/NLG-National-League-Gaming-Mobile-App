@@ -11,6 +11,9 @@ import 'package:nlg_mobile_application/pages/contact_nlg.dart';
 import 'package:nlg_mobile_application/pages/daily_health_quest.dart';
 import 'package:nlg_mobile_application/pages/login_page.dart';
 import 'package:nlg_mobile_application/pages/report_a_bug.dart';
+import 'package:nlg_mobile_application/service/shared_preferences.service.dart';
+
+import '../service/authentication.service.dart';
 
 class SideMenuBar extends StatefulWidget {
   const SideMenuBar({super.key});
@@ -20,6 +23,8 @@ class SideMenuBar extends StatefulWidget {
 }
 
 class _SideMenuBarState extends State<SideMenuBar> {
+  AuthenticationService authService = AuthenticationService();
+  Pref pref = Pref();
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -30,12 +35,16 @@ class _SideMenuBarState extends State<SideMenuBar> {
             right: 20,
             child: InkWell(
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const LoginPage(),
-                  ),
-                );
+                authService.signOut().then((value) async {
+                  await pref.removeAccessTokenFromPreferences();
+                }).whenComplete(() {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const LoginPage(),
+                    ),
+                  );
+                });
               },
               child: Row(
                 children: [

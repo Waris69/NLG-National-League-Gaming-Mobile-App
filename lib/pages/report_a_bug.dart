@@ -18,6 +18,13 @@ class ReportBugPage extends StatefulWidget {
 
 class _ReportBugPageState extends State<ReportBugPage> {
   GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
+  TextEditingController firstNameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController whereWasThisBugFoundController =
+      TextEditingController();
+  TextEditingController deviceUsedController = TextEditingController();
+  TextEditingController operatingSystemController = TextEditingController();
+  TextEditingController detailsController = TextEditingController();
   int grpValue = 1;
   @override
   Widget build(BuildContext context) {
@@ -73,12 +80,13 @@ class _ReportBugPageState extends State<ReportBugPage> {
                   ],
                 ),
               ),
-              textfield('First Name'),
-              textfield('Email'),
-              textfield('Where was this bug found?'),
-              textfield('Device Used'),
-              textfield('Operating System'),
-              textfield('Details'),
+              textfield('First Name', firstNameController),
+              textfield('Email', emailController),
+              textfield(
+                  'Where was this bug found?', whereWasThisBugFoundController),
+              textfield('Device Used', deviceUsedController),
+              textfield('Operating System', operatingSystemController),
+              textfield('Details', detailsController),
 
               // ? Radio Buttons
               Padding(
@@ -179,10 +187,11 @@ class _ReportBugPageState extends State<ReportBugPage> {
     );
   }
 
-  textfield(String lable) {
+  textfield(String lable, _controller) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 5),
       child: InputComponent(
+        controller: _controller,
         placeholder: lable,
         changeStyle: false,
       ),
