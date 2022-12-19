@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:nlg_mobile_application/components/custom_button.dart';
@@ -145,6 +146,16 @@ class _LoginPageState extends State<LoginPage> {
                         String password = passwordController.text;
 
                         if (email.isNotEmpty && password.isNotEmpty) {
+                          // ? Show loading circle
+                          showDialog(
+                            context: context,
+                            builder: (context) => const SpinKitRing(
+                              lineWidth: 5,
+                              color: Color(0xffB00B0E),
+                              size: 70.0,
+                            ),
+                          );
+
                           await authenticationNotifier.signIn(
                               context: context,
                               email: email,

@@ -9,8 +9,9 @@ import 'package:nlg_mobile_application/components/announcement_component.dart';
 import 'package:nlg_mobile_application/components/input_components.dart';
 import 'package:nlg_mobile_application/components/side_bar.dart';
 import 'package:nlg_mobile_application/components/team_card.dart';
+import 'package:nlg_mobile_application/notifier/database.notifier.dart';
 import 'package:nlg_mobile_application/utils/custom_bottom_navigation_bar.dart';
-
+import 'package:provider/provider.dart' as provider;
 import 'components/custom_button.dart';
 
 class HomePage extends StatefulWidget {
@@ -32,8 +33,15 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final DatabaseNotifier databaseNotifier =
+        provider.Provider.of<DatabaseNotifier>(context, listen: false);
     return SafeArea(
       child: Scaffold(
+        // floatingActionButton: FloatingActionButton(
+        //   onPressed: () {
+        //     databaseNotifier.getAnnouncements();
+        //   },
+        // ),
         key: _globalKey,
         extendBody: true,
         backgroundColor: const Color(0xff010424),
