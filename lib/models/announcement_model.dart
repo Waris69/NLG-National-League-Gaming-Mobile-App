@@ -11,18 +11,24 @@ class Announcement {
     this.id,
     this.title,
     this.description,
+    this.image,
+    this.icon,
     this.createdAt,
   );
 
   String id;
   String title;
   String description;
+  String image;
+  String icon;
   DateTime createdAt;
 
   factory Announcement.fromJson(Map<String, dynamic> json) => Announcement(
         json["id"].toString(),
         json["title"],
         json["description"],
+        json["image"],
+        json["icon"],
         DateTime.parse(json["created_at"]),
       );
 
@@ -30,6 +36,8 @@ class Announcement {
         "id": id,
         "title": title,
         "description": description,
+        "image": image,
+        "icon": icon,
         "created_at": createdAt.toIso8601String(),
       };
 }

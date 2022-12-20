@@ -88,7 +88,7 @@ class _AnnouncementCardState extends State<AnnouncementCard> {
                 ),
               ),
               const SizedBox(
-                width: 15,
+                width: 10,
               ),
               (widget.showDescription)
                   ? Expanded(
@@ -101,7 +101,7 @@ class _AnnouncementCardState extends State<AnnouncementCard> {
                               widget.text.toUpperCase(),
                               style: GoogleFonts.roboto(
                                   color: Colors.white,
-                                  fontSize: 16,
+                                  fontSize: 15,
                                   fontWeight: FontWeight.w800),
                             ),
                             Text(
@@ -122,13 +122,10 @@ class _AnnouncementCardState extends State<AnnouncementCard> {
                         widget.text.toUpperCase(),
                         style: GoogleFonts.roboto(
                             color: Colors.white,
-                            fontSize: 16,
+                            fontSize: 15,
                             fontWeight: FontWeight.w800),
                       ),
                     ),
-              const SizedBox(
-                width: 10,
-              ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

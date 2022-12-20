@@ -69,10 +69,10 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
                       itemBuilder: (context, index) {
                         Announcement announcement = _snapshot[index];
                         return AnnouncementCard(
-                          announcementCardimg: 'announcementCardKeyboard',
+                          announcementCardimg: announcement.image,
                           text: announcement.title,
                           description: announcement.description,
-                          icon: 'cupicon',
+                          icon: announcement.icon,
                           showDescription: true,
                         );
                       },
