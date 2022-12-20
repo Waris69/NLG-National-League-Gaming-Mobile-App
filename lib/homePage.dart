@@ -2,6 +2,7 @@ import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.da
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:nlg_mobile_application/components/hero_card.dart';
@@ -10,9 +11,11 @@ import 'package:nlg_mobile_application/components/input_components.dart';
 import 'package:nlg_mobile_application/components/side_bar.dart';
 import 'package:nlg_mobile_application/components/team_card.dart';
 import 'package:nlg_mobile_application/notifier/database.notifier.dart';
+import 'package:nlg_mobile_application/routes/app.routes.dart';
 import 'package:nlg_mobile_application/utils/custom_bottom_navigation_bar.dart';
 import 'package:provider/provider.dart' as provider;
 import 'components/custom_button.dart';
+import 'models/announcement_model.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -37,11 +40,6 @@ class _HomePageState extends State<HomePage> {
         provider.Provider.of<DatabaseNotifier>(context, listen: false);
     return SafeArea(
       child: Scaffold(
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            databaseNotifier.getAnnouncements();
-          },
-        ),
         key: _globalKey,
         extendBody: true,
         backgroundColor: const Color(0xff010424),
@@ -212,13 +210,19 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ],
                         ),
-                        Text(
-                          'see more',
-                          style: GoogleFonts.poppins(
-                            decoration: TextDecoration.underline,
-                            color: Colors.blue,
-                            fontWeight: FontWeight.w400,
-                            fontSize: 15,
+                        InkWell(
+                          onTap: () {
+                            Navigator.of(context)
+                                .pushNamed(AppRoutes.announcementRoute);
+                          },
+                          child: Text(
+                            'see more',
+                            style: GoogleFonts.poppins(
+                              decoration: TextDecoration.underline,
+                              color: Colors.blue,
+                              fontWeight: FontWeight.w400,
+                              fontSize: 15,
+                            ),
                           ),
                         ),
                       ],
@@ -227,13 +231,54 @@ class _HomePageState extends State<HomePage> {
                   // const AnnouncementCard(),
                 ],
               ),
-              const SizedBox(
+              SizedBox(
                 height: 500,
-                child: Padding(
-                  padding: EdgeInsets.only(top: 5),
-                  child: AnnouncementCard(),
+                child: FutureBuilder<void>(
+                  future: databaseNotifier.getAnnouncements(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.none) {
+                      return const SpinKitRing(
+                        lineWidth: 5,
+                        color: Color(0xffB00B0E),
+                        size: 70.0,
+                      );
+                    }
+                    if (snapshot.hasData) {
+                      List _snapshot = snapshot.data as List;
+                      return ListView.builder(
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: 4,
+                        itemBuilder: (context, index) {
+                          Announcement announcement = _snapshot[index];
+                          return AnnouncementCard(
+                            showDescription: false,
+                            announcementCardimg: 'announcementCardKeyboard',
+                            text: announcement.title,
+                            description: announcement.description,
+                            icon: 'cupicon',
+                          );
+                        },
+                      );
+                    }
+                    return const SpinKitRing(
+                      lineWidth: 5,
+                      color: Color(0xffB00B0E),
+                      size: 70.0,
+                    );
+                  },
                 ),
               ),
+              // SizedBox(
+              //   height: 500,
+              //   child: Padding(
+              //     padding: const EdgeInsets.only(top: 5),
+              //     child: AnnouncementCard(
+              //       announcementCardimg: 'announcementCardKeyboard',
+              //       text: 'Spartans vs  Kraken',
+              //       icon: 'cupicon',
+              //     ),
+              //   ),
+              // ),
 
               // ? Start gaming Button
               Padding(

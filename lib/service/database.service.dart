@@ -24,7 +24,8 @@ class DatabaseService {
       PostgrestResponse<dynamic> response =
           // ignore: deprecated_member_use
           await client.from('announcements').select().execute();
-      print("Announcements: ${response.data}");
+      var data = response.data;
+      return data;
     } catch (e) {
       print(e.toString());
     }
