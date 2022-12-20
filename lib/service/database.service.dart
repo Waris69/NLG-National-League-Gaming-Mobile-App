@@ -4,7 +4,7 @@ import 'package:supabase/supabase.dart';
 import 'shared_preferences.service.dart';
 
 class DatabaseService {
-  // ! Fetching data
+  // ! Fetching Announcements
   Future getAnnouncements() async {
     try {
       String? checkToken;
@@ -24,7 +24,34 @@ class DatabaseService {
       PostgrestResponse<dynamic> response =
           // ignore: deprecated_member_use
           await client.from('announcements').select().execute();
-      print(response.data);
+      print("Announcements: ${response.data}");
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
+  // ! Fetching Daily Health Quest
+  Future getDailyHealthQuest() async {
+    try {
+      String? checkToken;
+      // ? Check token
+      Pref pref = Pref();
+      var token = await pref.getAccessTokenFromPreferences();
+
+      SupabaseClient client = SupabaseClient(
+        SupaBaseHandler.supaBaseURL,
+        SupaBaseHandler.supaBaseKey,
+        headers: {
+          'apiKey': SupaBaseHandler.supaBaseKey,
+          'Authorization': 'Bearer $token',
+        },
+      );
+
+      PostgrestResponse<dynamic> response =
+          // ignore: deprecated_member_use
+          await client.from('quest').select().execute();
+      var data = response.data;
+      return data;
     } catch (e) {
       print(e.toString());
     }
