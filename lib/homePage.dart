@@ -37,11 +37,11 @@ class _HomePageState extends State<HomePage> {
         provider.Provider.of<DatabaseNotifier>(context, listen: false);
     return SafeArea(
       child: Scaffold(
-        // floatingActionButton: FloatingActionButton(
-        //   onPressed: () {
-        //     databaseNotifier.getAnnouncements();
-        //   },
-        // ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            databaseNotifier.getAnnouncements();
+          },
+        ),
         key: _globalKey,
         extendBody: true,
         backgroundColor: const Color(0xff010424),
