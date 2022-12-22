@@ -81,17 +81,17 @@ class _AnnouncementPopupCardState extends State<AnnouncementPopupCard> {
               ],
             ),
             Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Expanded(
-                child: Text(
-                  widget.description,
-                  maxLines: 5,
-                  overflow: TextOverflow.ellipsis,
-                  style: GoogleFonts.roboto(
-                      color: Colors.white,
-                      fontSize: 11,
-                      fontWeight: FontWeight.w400),
-                ),
+              padding: const EdgeInsets.only(
+                  bottom: 25.0, left: 10.0, right: 10.0, top: 10.0),
+              child: Text(
+                widget.description,
+                maxLines: 5,
+                textAlign: TextAlign.justify,
+                overflow: TextOverflow.ellipsis,
+                style: GoogleFonts.roboto(
+                    color: Colors.white,
+                    fontSize: 11,
+                    fontWeight: FontWeight.w400),
               ),
             ),
           ],
