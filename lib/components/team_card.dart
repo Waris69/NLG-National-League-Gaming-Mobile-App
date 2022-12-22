@@ -10,32 +10,32 @@ class TeamCard extends StatefulWidget {
 
 final List myList = [
   {
-    'image': 'person1',
+    'image': 'donald',
     'title': 'Donald Beam \| MS, LPC',
     'desc': 'Behavioral Health Director',
   },
   {
-    'image': 'person2',
+    'image': 'leena',
     'title': 'Leena Sahu',
     'desc': 'Special Events Director',
   },
   {
-    'image': 'person3',
+    'image': 'matthew',
     'title': 'Matthew Beam',
     'desc': 'League Commissioner',
   },
   {
-    'image': 'person4',
+    'image': 'taylor',
     'title': 'Taylor Horwood',
     'desc': 'Technology Director',
   },
   {
-    'image': 'person5',
+    'image': 'aaron',
     'title': 'Aaron York',
     'desc': 'Health Officer',
   },
   {
-    'image': 'person6',
+    'image': 'mike',
     'title': 'Mike Fox',
     'desc': 'Player Experience Director',
   },

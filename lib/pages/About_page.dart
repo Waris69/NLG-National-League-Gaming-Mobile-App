@@ -74,11 +74,7 @@ class About extends StatelessWidget {
                     style: GoogleFonts.inter(fontSize: 15, color: Colors.white),
                   ),
                   const SizedBox(
-                    height: 20,
-                  ),
-                  CustomButton(text: 'Submit'),
-                  const SizedBox(
-                    height: 20,
+                    height: 50,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
