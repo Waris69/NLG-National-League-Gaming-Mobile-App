@@ -1,11 +1,10 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ionicons/ionicons.dart';
-
+import 'package:nlg_mobile_application/service/email.service.dart';
 import '../components/custom_button.dart';
 import '../components/input_components.dart';
 import '../components/page_header.dart';
@@ -24,10 +23,61 @@ class _ContactPageState extends State<ContactPage> {
   TextEditingController firstNameController = TextEditingController();
   TextEditingController lastNameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
-  TextEditingController submitController = TextEditingController();
+  TextEditingController subjectController = TextEditingController();
   TextEditingController messageController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
+    // String userName = 'waris.waheed@koredigital.com.pk';
+    // String password = 'Kore1234@@@';
+    // String smtpServerHost = 'koretechxhosting.com';
+    // int smtpServerPort = 465;
+    // bool isSmtpServerSecure = true;
+
+    // Future<void> sendEmail() async {
+    //   final client =
+    //       SmtpClient('webmail.koretechxhosting.com', isLogEnabled: true);
+    //   try {
+    //     await client.connectToServer(smtpServerHost, smtpServerPort,
+    //         isSecure: isSmtpServerSecure);
+    //     await client.ehlo();
+    //     if (client.serverInfo.supportsAuth(AuthMechanism.plain)) {
+    //       await client.authenticate(userName, password, AuthMechanism.plain);
+    //     } else if (client.serverInfo.supportsAuth(AuthMechanism.login)) {
+    //       await client.authenticate(userName, password, AuthMechanism.login);
+    //     } else {
+    //       return;
+    //     }
+    //     final builder = MessageBuilder.prepareMultipartAlternativeMessage(
+    //       plainText: messageController.text,
+    //       htmlText:
+    //           '<marquee>${messageController.text}</br>${emailController.text}</marquee>',
+    //     )
+    //       ..from = [
+    //         MailAddress(
+    //             '${firstNameController.text} ${lastNameController.text}',
+    //             'waris.waheed@koredigital.com.pk')
+    //       ]
+    //       ..to = [MailAddress('Waris Waheed', 'wariswaheed69@gmail.com')]
+    //       ..subject = subjectController.text;
+    //     final mimeMessage = builder.buildMimeMessage();
+    //     final sendResponse = await client.sendMessage(mimeMessage);
+    //     print('message sent');
+    //   } on SmtpException catch (e) {
+    //     print('SMTP failed with $e');
+    //   }
+    // }
+
+    clear() {
+      firstNameController.clear();
+      lastNameController.clear();
+      emailController.clear();
+      subjectController.clear();
+      messageController.clear();
+    }
+
+    EmailService emailService = EmailService();
+
     return Scaffold(
       key: _globalKey,
       extendBody: true,
@@ -81,7 +131,7 @@ class _ContactPageState extends State<ContactPage> {
               textfield('First Name', firstNameController),
               textfield('Last Name', lastNameController),
               textfield('Email', emailController),
-              textfield('Submit', submitController),
+              textfield('Subject', subjectController),
               Padding(
                 padding: const EdgeInsets.symmetric(
                     horizontal: 25.0, vertical: 10.0),
@@ -99,6 +149,9 @@ class _ContactPageState extends State<ContactPage> {
                       height: 10,
                     ),
                     TextField(
+                      style: GoogleFonts.inter(
+                        color: Colors.white,
+                      ),
                       controller: messageController,
                       maxLines: 5,
                       decoration: InputDecoration(
@@ -124,7 +177,30 @@ class _ContactPageState extends State<ContactPage> {
               Padding(
                 padding: const EdgeInsets.symmetric(
                     horizontal: 25.0, vertical: 10.0),
-                child: CustomButton(text: 'Submit'),
+                child: InkWell(
+                  onTap: () async {
+                    showDialog(
+                      context: context,
+                      builder: (context) => const SpinKitRing(
+                        lineWidth: 5,
+                        color: Color(0xffB00B0E),
+                        size: 70.0,
+                      ),
+                    );
+                    // await sendEmail();
+                    await emailService.sendEmail(
+                      firstName: firstNameController.text,
+                      lastName: lastNameController.text,
+                      email: emailController.text,
+                      subject: subjectController.text,
+                      message: messageController.text,
+                    );
+
+                    clear();
+                    Navigator.pop(context);
+                  },
+                  child: CustomButton(text: 'Submit'),
+                ),
               ),
 
               Padding(

@@ -106,7 +106,7 @@ class _AnnouncementCardState extends State<AnnouncementCard> {
                             ),
                             Text(
                               widget.description,
-                              maxLines: 5,
+                              maxLines: 4,
                               overflow: TextOverflow.ellipsis,
                               style: GoogleFonts.roboto(
                                   color: Colors.white,

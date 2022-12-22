@@ -98,10 +98,28 @@ class _DailyHealthQuestState extends State<DailyHealthQuest> {
                       },
                     );
                   }
-                  return const SpinKitRing(
-                    lineWidth: 5,
-                    color: Color(0xffB00B0E),
-                    size: 70.0,
+                  return Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          'assets/icons/serverErrorIcon.png',
+                          width: MediaQuery.of(context).size.width * 0.5,
+                        ),
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        Text(
+                          'No data to show',
+                          style: GoogleFonts.poppins(
+                            letterSpacing: 2,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 18,
+                          ),
+                        ),
+                      ],
+                    ),
                   );
                 },
               ),

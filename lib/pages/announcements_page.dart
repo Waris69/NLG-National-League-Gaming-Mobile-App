@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:nlg_mobile_application/components/announcement_component.dart';
+import 'package:nlg_mobile_application/components/popup_announcement_card.dart';
+import 'package:popup_card/popup_card.dart';
 import 'package:provider/provider.dart';
-
 import '../components/side_bar.dart';
 import '../models/announcement_model.dart';
 import '../notifier/database.notifier.dart';
@@ -55,7 +57,7 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
               child: FutureBuilder<void>(
                 future: databaseNotifier.getAnnouncements(),
                 builder: (context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.none) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
                     return const SpinKitRing(
                       lineWidth: 5,
                       color: Color(0xffB00B0E),
@@ -68,20 +70,56 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
                       itemCount: _snapshot.length,
                       itemBuilder: (context, index) {
                         Announcement announcement = _snapshot[index];
-                        return AnnouncementCard(
-                          announcementCardimg: announcement.image,
-                          text: announcement.title,
-                          description: announcement.description,
-                          icon: announcement.icon,
-                          showDescription: true,
+                        return PopupItemLauncher(
+                          tag: '${index}announcement',
+                          popUp: PopUpItem(
+                            color: Colors.transparent,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 25.0),
+                            tag: '${index}announcement',
+                            child: AnnouncementPopupCard(
+                              announcementCardimg: announcement.image,
+                              text: announcement.title,
+                              description: announcement.description,
+                              icon: announcement.icon,
+                            ),
+                          ),
+                          child: AnnouncementCard(
+                            announcementCardimg: announcement.image,
+                            text: announcement.title,
+                            description: announcement.description,
+                            icon: announcement.icon,
+                            showDescription: true,
+                          ),
                         );
                       },
                     );
                   }
-                  return const SpinKitRing(
-                    lineWidth: 5,
-                    color: Color(0xffB00B0E),
-                    size: 70.0,
+                  return Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          'assets/icons/serverErrorIcon.png',
+                          width: MediaQuery.of(context).size.width * 0.5,
+                        ),
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        Text(
+                          'No data to show',
+                          style: GoogleFonts.poppins(
+                            letterSpacing: 2,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 18,
+                          ),
+                        ),
+                      ],
+                    ),
                   );
                 },
               ),

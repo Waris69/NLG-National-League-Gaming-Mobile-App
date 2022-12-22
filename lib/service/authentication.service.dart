@@ -22,11 +22,11 @@ class AuthenticationService {
 
       final Session? session = response.session;
       final User? user = response.user;
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(user!.email!),
-        ),
-      );
+      // ScaffoldMessenger.of(context).showSnackBar(
+      //   SnackBar(
+      //     content: Text(user!.email!),
+      //   ),
+      // );
       if (user != null) {
         pref.setAccessTokenFromPreferences(session!.accessToken);
         // ignore: use_build_context_synchronously

@@ -17,7 +17,7 @@ class _CustomBottomBarState extends State<CustomBottomBar> {
   final iconList = <IconData>[
     Icons.home,
     Icons.search_outlined,
-    Ionicons.logo_microsoft
+    Icons.menu_rounded
   ];
   // GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
   @override

@@ -236,7 +236,7 @@ class _HomePageState extends State<HomePage> {
                 child: FutureBuilder<void>(
                   future: databaseNotifier.getAnnouncements(),
                   builder: (context, snapshot) {
-                    if (snapshot.connectionState == ConnectionState.none) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
                       return const SpinKitRing(
                         lineWidth: 5,
                         color: Color(0xffB00B0E),
@@ -260,10 +260,26 @@ class _HomePageState extends State<HomePage> {
                         },
                       );
                     }
-                    return const SpinKitRing(
-                      lineWidth: 5,
-                      color: Color(0xffB00B0E),
-                      size: 70.0,
+                    return Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          'assets/icons/serverErrorIcon.png',
+                          width: MediaQuery.of(context).size.width * 0.5,
+                        ),
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        Text(
+                          'No data to show',
+                          style: GoogleFonts.poppins(
+                            letterSpacing: 2,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 18,
+                          ),
+                        ),
+                      ],
                     );
                   },
                 ),

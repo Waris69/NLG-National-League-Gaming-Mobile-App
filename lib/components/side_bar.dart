@@ -82,7 +82,7 @@ class _SideMenuBarState extends State<SideMenuBar> {
                     thickness: 2,
                     color: Colors.white,
                   ),
-                  menu(Icons.discord, 'Discord'),
+                  menu('discordIcon', 'Discord'),
                   InkWell(
                     onTap: () {
                       Navigator.push(
@@ -92,7 +92,7 @@ class _SideMenuBarState extends State<SideMenuBar> {
                         ),
                       );
                     },
-                    child: menu(Icons.discord, 'Contact NLG'),
+                    child: menu('contactIcon', 'Contact NLG'),
                   ),
                   InkWell(
                     onTap: () {
@@ -103,7 +103,7 @@ class _SideMenuBarState extends State<SideMenuBar> {
                         ),
                       );
                     },
-                    child: menu(Icons.discord, 'Report a bug'),
+                    child: menu('warningIcon', 'Report a bug'),
                   ),
                   InkWell(
                     onTap: () {
@@ -114,7 +114,7 @@ class _SideMenuBarState extends State<SideMenuBar> {
                         ),
                       );
                     },
-                    child: menu(Icons.discord, 'About App'),
+                    child: menu('tapIcon', 'About App'),
                   ),
                   InkWell(
                     onTap: () {
@@ -125,9 +125,9 @@ class _SideMenuBarState extends State<SideMenuBar> {
                         ),
                       );
                     },
-                    child: menu(Icons.discord, 'Daily Helth Quest'),
+                    child: menu('questIcon', 'Daily Helth Quest'),
                   ),
-                  menu(Icons.discord, 'Visit Website'),
+                  menu('globeIcon', 'Visit Website'),
                   const Divider(
                     thickness: 2,
                     color: Colors.white,
@@ -179,9 +179,9 @@ Widget menu(icon, menuName) {
       children: [
         Expanded(
           flex: 1,
-          child: Icon(
-            icon,
-            color: Colors.white,
+          child: Image.asset(
+            'assets/icons/$icon.png',
+            height: 25,
           ),
         ),
         Expanded(
