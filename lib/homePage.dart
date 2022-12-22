@@ -267,7 +267,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                       children: [
                         Image.asset(
                           'assets/icons/serverErrorIcon.png',
-                          width: MediaQuery.of(context).size.width * 0.5,
+                          width: MediaQuery.of(context).size.width * 0.4,
                         ),
                         const SizedBox(
                           height: 30,
