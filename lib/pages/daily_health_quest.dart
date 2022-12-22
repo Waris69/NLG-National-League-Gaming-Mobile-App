@@ -13,6 +13,7 @@ import 'package:nlg_mobile_application/utils/custom_bottom_navigation_bar.dart';
 import 'package:provider/provider.dart';
 import '../components/side_bar.dart';
 import '../notifier/database.notifier.dart';
+import 'package:lottie/lottie.dart';
 
 class DailyHealthQuest extends StatefulWidget {
   DailyHealthQuest({super.key});
@@ -97,29 +98,59 @@ class _DailyHealthQuestState extends State<DailyHealthQuest> {
                       },
                     );
                   }
-                  return Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          'assets/icons/serverErrorIcon.png',
-                          width: MediaQuery.of(context).size.width * 0.4,
-                        ),
-                        const SizedBox(
-                          height: 30,
-                        ),
-                        Text(
-                          'No data to show',
-                          style: GoogleFonts.poppins(
-                            letterSpacing: 2,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 18,
-                          ),
-                        ),
-                      ],
-                    ),
+                  return Lottie.asset(
+                    'assets/noDataLoader.json',
+                    width: 350,
+                    height: 350,
+                    // fit: BoxFit.cover,
                   );
+
+                  //     Column(
+                  //   mainAxisAlignment: MainAxisAlignment.center,
+                  //   children: [
+                  //     SizedBox(
+                  //       height: 300,
+                  //       child: Lottie.asset(
+                  //         'assets/NoData.json',
+                  //         // width: 200,
+                  //         // height: 100,
+                  //         // fit: BoxFit.cover,
+                  //       ),
+                  //     ),
+                  //     Text(
+                  //       'No data to show',
+                  //       style: GoogleFonts.poppins(
+                  //         letterSpacing: 2,
+                  //         color: Colors.white,
+                  //         fontWeight: FontWeight.w600,
+                  //         fontSize: 18,
+                  //       ),
+                  //     ),
+                  //   ],
+                  // );
+                  //? return Center(
+                  //   child: Column(
+                  //     mainAxisAlignment: MainAxisAlignment.center,
+                  //     children: [
+                  //       Image.asset(
+                  //         'assets/icons/serverErrorIcon.png',
+                  //         width: MediaQuery.of(context).size.width * 0.4,
+                  //       ),
+                  //       const SizedBox(
+                  //         height: 30,
+                  //       ),
+                  //       Text(
+                  //         'No data to show',
+                  //         style: GoogleFonts.poppins(
+                  //           letterSpacing: 2,
+                  //           color: Colors.white,
+                  //           fontWeight: FontWeight.w600,
+                  //           fontSize: 18,
+                  //         ),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // );
                 },
               ),
             ),

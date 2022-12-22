@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
 import 'package:nlg_mobile_application/components/announcement_component.dart';
 import 'package:nlg_mobile_application/components/popup_announcement_card.dart';
 import 'package:popup_card/popup_card.dart';
@@ -98,29 +99,36 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
                       },
                     );
                   }
-                  return Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          'assets/icons/serverErrorIcon.png',
-                          width: MediaQuery.of(context).size.width * 0.4,
-                        ),
-                        const SizedBox(
-                          height: 30,
-                        ),
-                        Text(
-                          'No data to show',
-                          style: GoogleFonts.poppins(
-                            letterSpacing: 2,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 18,
-                          ),
-                        ),
-                      ],
-                    ),
+                  return Lottie.asset(
+                    'assets/noDataLoader.json',
+                    width: 350,
+                    height: 350,
+                    // fit: BoxFit.cover,
                   );
+
+                  // ! Center(
+                  //   child: Column(
+                  //     mainAxisAlignment: MainAxisAlignment.center,
+                  //     children: [
+                  //       Image.asset(
+                  //         'assets/icons/serverErrorIcon.png',
+                  //         width: MediaQuery.of(context).size.width * 0.4,
+                  //       ),
+                  //       const SizedBox(
+                  //         height: 30,
+                  //       ),
+                  //       Text(
+                  //         'No data to show',
+                  //         style: GoogleFonts.poppins(
+                  //           letterSpacing: 2,
+                  //           color: Colors.white,
+                  //           fontWeight: FontWeight.w600,
+                  //           fontSize: 18,
+                  //         ),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // );
                 },
               ),
             ),
