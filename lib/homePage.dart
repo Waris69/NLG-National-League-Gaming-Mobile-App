@@ -1,3 +1,4 @@
+import 'package:animated_background/animated_background.dart';
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -24,7 +25,7 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   int _currentIndex = 0;
   final iconList = <IconData>[
     Icons.home,
@@ -47,17 +48,20 @@ class _HomePageState extends State<HomePage> {
         drawer: Drawer(
           width: MediaQuery.of(context).size.width,
           backgroundColor: const Color(0xff000423),
-          child:
-              // const SideMenuBar(),
-              Container(
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                fit: BoxFit.fitWidth,
-                image: AssetImage('assets/images/sideMenuImage.png'),
-              ),
-            ),
+          child: AnimatedBackground(
+            behaviour: RandomParticleBehaviour(),
+            vsync: this,
             child: const SideMenuBar(),
           ),
+          //     Container(
+          //   decoration: const BoxDecoration(
+          //     image: DecorationImage(
+          //       fit: BoxFit.fitWidth,
+          //       image: AssetImage('assets/images/sideMenuImage.png'),
+          //     ),
+          //   ),
+          //   child: const SideMenuBar(),
+          // ),
         ),
         body: Container(
           height: double.infinity,
