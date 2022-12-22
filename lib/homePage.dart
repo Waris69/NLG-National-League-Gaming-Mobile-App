@@ -1,4 +1,3 @@
-import 'package:animated_background/animated_background.dart';
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -48,20 +47,15 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         drawer: Drawer(
           width: MediaQuery.of(context).size.width,
           backgroundColor: const Color(0xff000423),
-          child: AnimatedBackground(
-            behaviour: RandomParticleBehaviour(),
-            vsync: this,
+          child: Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                fit: BoxFit.fitWidth,
+                image: AssetImage('assets/images/sideMenuImage.png'),
+              ),
+            ),
             child: const SideMenuBar(),
           ),
-          //     Container(
-          //   decoration: const BoxDecoration(
-          //     image: DecorationImage(
-          //       fit: BoxFit.fitWidth,
-          //       image: AssetImage('assets/images/sideMenuImage.png'),
-          //     ),
-          //   ),
-          //   child: const SideMenuBar(),
-          // ),
         ),
         body: Container(
           height: double.infinity,
