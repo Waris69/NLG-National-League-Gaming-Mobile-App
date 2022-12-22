@@ -71,7 +71,7 @@ class _TeamCardState extends State<TeamCard> {
                     ),
                     child: Image.asset(
                       'assets/images/${myList[index]['image']}.png',
-                      fit: BoxFit.fill,
+                      fit: BoxFit.cover,
                       height: 190,
                     ),
                   ),

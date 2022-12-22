@@ -27,8 +27,8 @@ class About extends StatelessWidget {
             Container(
           decoration: const BoxDecoration(
             image: DecorationImage(
-              fit: BoxFit.fitWidth,
-              image: AssetImage('assets/images/sideMenuImage.png'),
+              fit: BoxFit.cover,
+              image: AssetImage('assets/images/sidebarBackground.png'),
             ),
           ),
           child: const SideMenuBar(),
@@ -74,7 +74,7 @@ class About extends StatelessWidget {
                     style: GoogleFonts.inter(fontSize: 15, color: Colors.white),
                   ),
                   const SizedBox(
-                    height: 50,
+                    height: 60,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,

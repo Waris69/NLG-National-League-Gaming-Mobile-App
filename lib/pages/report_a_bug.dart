@@ -41,8 +41,8 @@ class _ReportBugPageState extends State<ReportBugPage> {
             Container(
           decoration: const BoxDecoration(
             image: DecorationImage(
-              fit: BoxFit.fitWidth,
-              image: AssetImage('assets/images/sideMenuImage.png'),
+              fit: BoxFit.cover,
+              image: AssetImage('assets/images/sidebarBackground.png'),
             ),
           ),
           child: const SideMenuBar(),

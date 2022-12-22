@@ -34,8 +34,8 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
         child: Container(
           decoration: const BoxDecoration(
             image: DecorationImage(
-              fit: BoxFit.fitWidth,
-              image: AssetImage('assets/images/sideMenuImage.png'),
+              fit: BoxFit.cover,
+              image: AssetImage('assets/images/sidebarBackground.png'),
             ),
           ),
           child: const SideMenuBar(),

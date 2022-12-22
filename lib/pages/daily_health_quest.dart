@@ -11,7 +11,6 @@ import 'package:nlg_mobile_application/models/checkbox_state.dart';
 import 'package:nlg_mobile_application/models/quest_model.dart';
 import 'package:nlg_mobile_application/utils/custom_bottom_navigation_bar.dart';
 import 'package:provider/provider.dart';
-
 import '../components/side_bar.dart';
 import '../notifier/database.notifier.dart';
 
@@ -55,8 +54,8 @@ class _DailyHealthQuestState extends State<DailyHealthQuest> {
             Container(
           decoration: const BoxDecoration(
             image: DecorationImage(
-              fit: BoxFit.fitWidth,
-              image: AssetImage('assets/images/sideMenuImage.png'),
+              fit: BoxFit.cover,
+              image: AssetImage('assets/images/sidebarBackground.png'),
             ),
           ),
           child: const SideMenuBar(),
@@ -79,13 +78,13 @@ class _DailyHealthQuestState extends State<DailyHealthQuest> {
               child: FutureBuilder<void>(
                 future: databaseNotifier.getDailyHealthQuest(),
                 builder: (context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.none) {
-                    return const SpinKitRing(
-                      lineWidth: 5,
-                      color: Color(0xffB00B0E),
-                      size: 70.0,
-                    );
-                  }
+                  // if (snapshot.connectionState == ConnectionState.none) {
+                  //   return const SpinKitRing(
+                  //     lineWidth: 5,
+                  //     color: Color(0xffB00B0E),
+                  //     size: 70.0,
+                  //   );
+                  // }
                   if (snapshot.hasData) {
                     List _snapshot = snapshot.data as List;
                     return ListView.builder(

@@ -7,14 +7,12 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:nlg_mobile_application/components/hero_card.dart';
 import 'package:nlg_mobile_application/components/announcement_component.dart';
-import 'package:nlg_mobile_application/components/input_components.dart';
 import 'package:nlg_mobile_application/components/side_bar.dart';
 import 'package:nlg_mobile_application/components/team_card.dart';
 import 'package:nlg_mobile_application/notifier/database.notifier.dart';
 import 'package:nlg_mobile_application/routes/app.routes.dart';
 import 'package:nlg_mobile_application/utils/custom_bottom_navigation_bar.dart';
 import 'package:provider/provider.dart' as provider;
-import 'components/custom_button.dart';
 import 'models/announcement_model.dart';
 
 class HomePage extends StatefulWidget {
@@ -248,12 +246,18 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                         itemCount: 4,
                         itemBuilder: (context, index) {
                           Announcement announcement = _snapshot[index];
-                          return AnnouncementCard(
-                            showDescription: false,
-                            announcementCardimg: 'announcementCardKeyboard',
-                            text: announcement.title,
-                            description: announcement.description,
-                            icon: 'cupicon',
+                          return InkWell(
+                            onTap: () {
+                              Navigator.of(context)
+                                  .pushNamed(AppRoutes.announcementRoute);
+                            },
+                            child: AnnouncementCard(
+                              showDescription: false,
+                              announcementCardimg: 'announcementCardKeyboard',
+                              text: announcement.title,
+                              description: announcement.description,
+                              icon: 'cupicon',
+                            ),
                           );
                         },
                       );

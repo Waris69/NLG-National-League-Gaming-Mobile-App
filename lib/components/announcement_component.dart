@@ -93,15 +93,17 @@ class _AnnouncementCardState extends State<AnnouncementCard> {
               (widget.showDescription)
                   ? Expanded(
                       child: Padding(
-                        padding: const EdgeInsets.only(top: 8),
+                        padding: const EdgeInsets.only(top: 10),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
                               widget.text.toUpperCase(),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
                               style: GoogleFonts.roboto(
                                   color: Colors.white,
-                                  fontSize: 15,
+                                  fontSize: 16,
                                   fontWeight: FontWeight.w800),
                             ),
                             Text(
@@ -110,7 +112,7 @@ class _AnnouncementCardState extends State<AnnouncementCard> {
                               overflow: TextOverflow.ellipsis,
                               style: GoogleFonts.roboto(
                                   color: Colors.white,
-                                  fontSize: 11,
+                                  fontSize: 12,
                                   fontWeight: FontWeight.w400),
                             ),
                           ],
