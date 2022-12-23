@@ -2,6 +2,7 @@ import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.da
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ionicons/ionicons.dart';
@@ -32,13 +33,52 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   ];
 
   GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
+  late FlutterLocalNotificationsPlugin localNotification;
+
+  @override
+  void initState() {
+    super.initState();
+    var androidInitialize = const AndroidInitializationSettings('ic_launcher');
+    var iosInitialize = const DarwinInitializationSettings();
+
+    var initializationSettings =
+        InitializationSettings(android: androidInitialize, iOS: iosInitialize);
+
+    localNotification = FlutterLocalNotificationsPlugin();
+    localNotification.initialize(initializationSettings);
+  }
+
+  Future _showNotification(notification) async {
+    var androidDetails = const AndroidNotificationDetails(
+      'channelId',
+      'local Notification',
+      channelDescription: 'This is the body of nitification',
+      importance: Importance.high,
+    );
+    var iosDetails = const DarwinNotificationDetails();
+
+    var generalNotificationDetails =
+        NotificationDetails(android: androidDetails, iOS: iosDetails);
+
+    await localNotification.show(0, "National League Gaming",
+        notification.toString(), generalNotificationDetails);
+  }
 
   @override
   Widget build(BuildContext context) {
     final DatabaseNotifier databaseNotifier =
         provider.Provider.of<DatabaseNotifier>(context, listen: false);
+
+    var data = databaseNotifier.getAnnouncementsNotification();
+
     return SafeArea(
       child: Scaffold(
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            // databaseNotifier.getAnnouncementsNotification();
+            _showNotification(data);
+          },
+        ),
         key: _globalKey,
         extendBody: true,
         backgroundColor: const Color(0xff010424),

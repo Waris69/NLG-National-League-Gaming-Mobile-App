@@ -19,4 +19,14 @@ class DatabaseNotifier extends ChangeNotifier {
     List data = await databaseService.getDailyHealthQuest();
     return data.map((questElement) => Quest.fromJson(questElement)).toList();
   }
+
+  // ! Fetching Announcements Notification
+  Future getAnnouncementsNotification() async {
+    String? data = await databaseService.getAnnouncementsNotification();
+    // await databaseService.getAnnouncementsNotification();
+    // return data;
+    return data;
+    // .map((announcement) => Announcement.fromJson(announcement))
+    // .toList();
+  }
 }
